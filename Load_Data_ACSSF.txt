@@ -1,0 +1,9 @@
+/*load data */
+
+COPY ACSSF_Income_E FROM '/PostgreSQL/e20135us0015000.txt' DELIMITER ','  CSV;
+
+COPY ACSSF_Income_M FROM '/PostgreSQL/m20135us0015000.txt' DELIMITER ','  CSV;
+ 
+COPY ACSSF_Geography FROM '/PostgreSQL/g20135us.csv' DELIMITER ',' CSV;
+
+COPY acssf_consumer FROM '/PostgreSQL/Consumer_Complaints.csv' DELIMITER ',' CSV;

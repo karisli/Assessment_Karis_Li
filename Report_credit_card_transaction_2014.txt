@@ -1,0 +1,14 @@
+SELECT distinct on(ag.zcta5) zcta5, ac.product,ac.company,to_date(ac.date_received,'MM/DD/YYYY') date_received,
+ae.B06010_011,ac.submitted_via ,ac.timely_response
+  FROM acssf_geography ag, acssf_income_e ae,acssf_consumer ac
+  where ae.logrecno = ag.logrecno
+  and ag.zcta5 IS NOT NULL
+  and  to_number(ac.zip_code,'999999999')=ag.zcta5
+  and ac.zip_code is not null
+  and ac.product='Credit card'
+  and ac.issue ='Transaction issue'
+ and to_date(ac.date_sent_to_company,'MM/DD/YYYY')<'01/01/2015' 
+ and to_date(ac.date_received,'MM/DD/YYYY')>'01/01/2014'
+ and ae.B06010_011 IS NOT NULL 
+ order by ag.zcta5 desc
+ 

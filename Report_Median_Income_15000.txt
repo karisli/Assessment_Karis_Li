@@ -1,0 +1,9 @@
+select distinct ac.product,ac.date_received,ac.zip_code
+from acssf_consumer ac where to_number(ac.zip_code,'999999999') in (
+SELECT ag.zcta5
+  FROM acssf_geography ag, acssf_income_e ae 
+  where ae.logrecno = ag.logrecno
+  and ag.zcta5 IS NOT NULL
+  and ae.B06011_001 IS NOT NULL 
+  and ae.B06011_001 <>'.'
+  and cast(ae.B06011_001 as int)<15000)
